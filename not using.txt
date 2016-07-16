@@ -1,0 +1,357 @@
+/*void MainScene::paintGL()//урок 3. Массивы вершин
+{
+    glClear(GL_COLOR_BUFFER_BIT);
+    //инициальизация трех треугольников
+    GLfloat triangleVertexArray[6][3];//шесть вершин, три теугольника
+    GLfloat triangleColorArray[6][3];//шесть вершин, три составляющих RGB
+    GLubyte triangleIndexArray[3][3];//три теугольника для индексов
+
+    //задание параметров
+    triangleVertexArray[0][0] = 0.0;//координаты первой веришаны
+    triangleVertexArray[0][1] = 0.0;
+    triangleVertexArray[0][2] = 0.0;
+
+    triangleVertexArray[1][0] = 1.0;//координаты второй вершины
+    triangleVertexArray[1][1] = 1.0;
+    triangleVertexArray[1][2] = 0.0;
+
+    triangleVertexArray[2][0] = 1.0;//координаты третьей вершины
+    triangleVertexArray[2][1] = 0.0;
+    triangleVertexArray[2][2] = 0.0;
+
+    triangleColorArray[0][0] = 0.25;//задание цвета первой вершины
+    triangleColorArray[0][1] = 0.87;
+    triangleColorArray[0][2] = 0.81;
+
+    triangleColorArray[1][0] = 0.97;//задание цвета второй вершины
+    triangleColorArray[1][1] = 0.23;
+    triangleColorArray[1][2] = 0.01;
+
+    triangleColorArray[2][0] = 0.25;//задание цвета третьей вершины
+    triangleColorArray[2][1] = 0.87;
+    triangleColorArray[2][2] = 0.81;
+
+
+    triangleVertexArray[3][0] = 0.0;//координаты третьей вершины
+    triangleVertexArray[3][1] = 1.0;
+    triangleVertexArray[3][2] = 0.0;
+
+    triangleVertexArray[4][0] = 0.75;//координаты четвертой вершины
+    triangleVertexArray[4][1] = 0.75;
+    triangleVertexArray[4][2] = 0.0;
+
+    triangleVertexArray[5][0] = 0.25;//координаты пятой вершины
+    triangleVertexArray[5][1] = 0.25;
+    triangleVertexArray[5][2] = 0.0;
+
+    triangleColorArray[3][0] = 1.0;//третья красная вершина
+    triangleColorArray[3][1] = 0.0;
+    triangleColorArray[3][2] = 0.0;
+
+    triangleColorArray[4][0] = 0.0;//четвертая зеленая вершина
+    triangleColorArray[4][1] = 1.0;
+    triangleColorArray[4][2] = 0.0;
+
+    triangleColorArray[5][0] = 0.0;//пятая зеленая вершина
+    triangleColorArray[5][1] = 1.0;
+    triangleColorArray[5][2] = 0.0;
+
+    triangleIndexArray[0][0] = 0;//индексы первого треугольника
+    triangleIndexArray[0][1] = 1;
+    triangleIndexArray[0][2] = 2;
+
+    triangleIndexArray[1][0] = 0;//индексы второго треугольника
+    triangleIndexArray[1][1] = 3;
+    triangleIndexArray[1][2] = 5;
+
+    triangleIndexArray[2][0] = 1;//индексы третьего треугольника
+    triangleIndexArray[2][1] = 3;
+    triangleIndexArray[2][2] = 4;
+
+    glVertexPointer(3, GL_FLOAT, 0, triangleVertexArray);
+    glColorPointer(3, GL_FLOAT, 0, triangleColorArray);
+    glDrawElements(GL_TRIANGLES, 9, GL_UNSIGNED_BYTE, triangleIndexArray);
+
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_COLOR_ARRAY);
+}
+
+*/
+
+/*void MainScene::paintGL()//урок 2 - отрисовка 2D при помощи GlBegin и GlEnd
+{
+    //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    glColor3f(0.25, 0.87, 0.81);//треугольник
+    glBegin(GL_TRIANGLES);
+    glVertex2f(0.0, 0.0);
+    glVertex2f(1.0, 1.0);
+    glVertex2f(1.0, 0.0);
+    glEnd();
+
+    glColor3f(0.13, 0.56, 0.13);//квадрат square
+    glBegin(GL_QUADS);
+    glVertex2f(0.0, 0.5);
+    glVertex2f(0.0, 1.0);
+    glVertex2f(0.5, 1.0);
+    glVertex2f(0.5, 0.5);
+    glEnd();
+
+    glLineWidth(6.0);//линия
+    glColor3f(0.65, 0.16, 0.16);
+    glBegin(GL_LINE_STRIP);
+    glVertex2f(0.0, 0.5);
+    glVertex2f(0.5, 1.0);
+    glVertex2f(1.0, 0.5);
+    glVertex2f(0.5, 0.0);
+    glVertex2f(0.0, 0.5);
+    glEnd();
+}*/
+
+
+
+/*
+void MainScene::paintGL()//урок 4. 3D
+{
+    qglClearColor(Qt::white);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+
+    glRotatef(rotateCameraX, 1.0, 0.0, 0.0);//поворот камеры по трем осям
+    glRotatef(rotateCameraY, 0.0, 1.0, 0.0);
+    glRotatef(rotateCameraZ, 0.0, 0.0, 1.0);
+
+    glRotated(rotateCubeX, 1.0, 0.0, 0.0);//поворот матрицы (а не куба) по трем осям
+    glRotated(rotateCubeY, 0.0, 1.0, 0.0);
+    glRotated(rotateCubeZ, 0.0, 0.0, 1.0);
+
+    glScalef(sclareCameraX, sclareCameraY, sclareCameraZ);//масштаб матрицы по трем осям
+    glTranslatef(sclareCameraMatrixX, sclareCameraMatrixY, sclareCameraMatrixZ);//перемещение матрицы по трем осям
+
+    //выставление координат куба
+
+    cubeVertexArray[0][0] = -size_Edge + centerX;
+    cubeVertexArray[0][1] = -size_Edge + centerY;
+    cubeVertexArray[0][2] = size_Edge + centerZ;
+
+    cubeVertexArray[1][0] = -size_Edge + centerX;
+    cubeVertexArray[1][1] = size_Edge + centerY;
+    cubeVertexArray[1][2] = size_Edge + centerZ;
+
+    cubeVertexArray[2][0] = size_Edge + centerX;
+    cubeVertexArray[2][1] = size_Edge + centerY;
+    cubeVertexArray[2][2] = size_Edge + centerZ;
+
+    cubeVertexArray[3][0] = size_Edge + centerX;
+    cubeVertexArray[3][1] = -size_Edge + centerY;
+    cubeVertexArray[3][2] = size_Edge + centerZ;
+
+    cubeVertexArray[4][0] = -size_Edge + centerX;
+    cubeVertexArray[4][1] = -size_Edge + centerY;
+    cubeVertexArray[4][2] = -size_Edge + centerZ;
+
+    cubeVertexArray[5][0] = -size_Edge + centerX;
+    cubeVertexArray[5][1] = size_Edge + centerY;
+    cubeVertexArray[5][2] = -size_Edge + centerZ;
+
+    cubeVertexArray[6][0] = size_Edge + centerX;
+    cubeVertexArray[6][1] = size_Edge + centerY;
+    cubeVertexArray[6][2] = -size_Edge + centerZ;
+
+    cubeVertexArray[7][0] = size_Edge + centerX;
+    cubeVertexArray[7][1] = -size_Edge + centerY;
+    cubeVertexArray[7][2] = -size_Edge + centerZ;
+
+    //накладывание текстур на куб
+
+    glBindTexture(GL_TEXTURE_2D, textures[0]);
+
+    cubeTextureArray[0][0] = 0.0;
+    cubeTextureArray[0][1] = 0.0;
+
+    cubeTextureArray[1][0] = 1.0;
+    cubeTextureArray[1][1] = 0.0;
+
+    cubeTextureArray[2][0] = 1.0;
+    cubeTextureArray[2][1] = 1.0;
+
+    cubeTextureArray[3][0] = 0.0;
+    cubeTextureArray[3][1] = 1.0;
+
+    cubeIndexArray[0][0] = 0;//задаем индексы
+    cubeIndexArray[0][1] = 3;
+    cubeIndexArray[0][2] = 2;
+    cubeIndexArray[0][3] = 1;
+
+    glVertexPointer(3, GL_FLOAT, 0, cubeVertexArray);//отрисовка
+    glTexCoordPointer(2, GL_FLOAT, 0, cubeTextureArray);
+    glDrawElements(GL_QUADS, 4, GL_UNSIGNED_BYTE, cubeIndexArray);
+
+    glBindTexture(GL_TEXTURE_2D, textures[1]);
+
+    cubeTextureArray[0][0] = 0.0;
+    cubeTextureArray[0][1] = 0.0;
+
+    cubeTextureArray[1][0] = 1.0;
+    cubeTextureArray[1][1] = 0.0;
+
+    cubeTextureArray[5][0] = 1.0;
+    cubeTextureArray[5][1] = 1.0;
+
+    cubeTextureArray[4][0] = 0.0;
+    cubeTextureArray[4][1] = 1.0;
+
+    cubeIndexArray[0][0] = 0;
+    cubeIndexArray[0][1] = 1;
+    cubeIndexArray[0][2] = 5;
+    cubeIndexArray[0][3] = 4;
+
+    glVertexPointer(3, GL_FLOAT, 0, cubeVertexArray);
+    glTexCoordPointer(2, GL_FLOAT, 0, cubeTextureArray);
+    glDrawElements(GL_QUADS, 4, GL_UNSIGNED_BYTE, cubeIndexArray);
+
+    glBindTexture(GL_TEXTURE_2D, textures[2]);
+
+    cubeTextureArray[7][0] = 0.0;
+    cubeTextureArray[7][1] = 0.0;
+
+    cubeTextureArray[4][0] = 1.0;
+    cubeTextureArray[4][1] = 0.0;
+
+    cubeTextureArray[5][0] = 1.0;
+    cubeTextureArray[5][1] = 1.0;
+
+    cubeTextureArray[6][0] = 0.0;
+    cubeTextureArray[6][1] = 1.0;
+
+    cubeIndexArray[0][0] = 7;
+    cubeIndexArray[0][1] = 4;
+    cubeIndexArray[0][2] = 5;
+    cubeIndexArray[0][3] = 6;
+
+    glVertexPointer(3, GL_FLOAT, 0, cubeVertexArray);
+    glTexCoordPointer(2, GL_FLOAT, 0, cubeTextureArray);
+    glDrawElements(GL_QUADS, 4, GL_UNSIGNED_BYTE, cubeIndexArray);
+
+    glBindTexture(GL_TEXTURE_2D, textures[3]);
+
+    cubeTextureArray[3][0] = 0.0;
+    cubeTextureArray[3][1] = 0.0;
+
+    cubeTextureArray[7][0] = 1.0;
+    cubeTextureArray[7][1] = 0.0;
+
+    cubeTextureArray[6][0] = 1.0;
+    cubeTextureArray[6][1] = 1.0;
+
+    cubeTextureArray[2][0] = 0.0;
+    cubeTextureArray[2][1] = 1.0;
+
+    cubeIndexArray[0][0] = 3;
+    cubeIndexArray[0][1] = 7;
+    cubeIndexArray[0][2] = 6;
+    cubeIndexArray[0][3] = 2;
+
+    glVertexPointer(3, GL_FLOAT, 0, cubeVertexArray);
+    glTexCoordPointer(2, GL_FLOAT, 0, cubeTextureArray);
+    glDrawElements(GL_QUADS, 4, GL_UNSIGNED_BYTE, cubeIndexArray);
+
+    glBindTexture(GL_TEXTURE_2D, textures[4]);
+
+    cubeTextureArray[1][0] = 0.0;
+    cubeTextureArray[1][1] = 0.0;
+
+    cubeTextureArray[2][0] = 1.0;
+    cubeTextureArray[2][1] = 0.0;
+
+    cubeTextureArray[6][0] = 1.0;
+    cubeTextureArray[6][1] = 1.0;
+
+    cubeTextureArray[5][0] = 0.0;
+    cubeTextureArray[5][1] = 1.0;
+
+    cubeIndexArray[0][0] = 1;
+    cubeIndexArray[0][1] = 2;
+    cubeIndexArray[0][2] = 6;
+    cubeIndexArray[0][3] = 5;
+
+    glVertexPointer(3, GL_FLOAT, 0, cubeVertexArray);
+    glTexCoordPointer(2, GL_FLOAT, 0, cubeTextureArray);
+    glDrawElements(GL_QUADS, 4, GL_UNSIGNED_BYTE, cubeIndexArray);
+
+    glBindTexture(GL_TEXTURE_2D, textures[5]);
+
+    cubeTextureArray[0][0] = 0.0;
+    cubeTextureArray[0][1] = 0.0;
+
+    cubeTextureArray[4][0] = 1.0;
+    cubeTextureArray[4][1] = 0.0;
+
+    cubeTextureArray[7][0] = 1.0;
+    cubeTextureArray[7][1] = 1.0;
+
+    cubeTextureArray[3][0] = 0.0;
+    cubeTextureArray[3][1] = 1.0;
+
+    cubeIndexArray[0][0] = 0;
+    cubeIndexArray[0][1] = 4;
+    cubeIndexArray[0][2] = 7;
+    cubeIndexArray[0][3] = 3;
+
+    glVertexPointer(3, GL_FLOAT, 0, cubeVertexArray);
+    glTexCoordPointer(2, GL_FLOAT, 0, cubeTextureArray);
+    glDrawElements(GL_QUADS, 4, GL_UNSIGNED_BYTE, cubeIndexArray);
+
+    //сцена, нижняя часть
+
+    //glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+
+    glRotated(rotateCameraX, 1.0, 0.0, 0.0);//поворот матрицы (а не куба) по трем осям
+    glRotated(rotateCameraY, 0.0, 1.0, 0.0);//поворот матрицы (а не куба) по трем осям
+
+    lowRectVertexArr[0][0] = 15.0;
+    lowRectVertexArr[0][1] = -5.0;//высота нижней части
+    lowRectVertexArr[0][2] = 15.0;
+
+    lowRectVertexArr[1][0] = 15.0;
+    lowRectVertexArr[1][1] = -5.0;//высота нижней части
+    lowRectVertexArr[1][2] = -15.0;
+
+    lowRectVertexArr[2][0] = -15.0;
+    lowRectVertexArr[2][1] = -5.0;//высота нижней части
+    lowRectVertexArr[2][2] = -15.0;
+
+    lowRectVertexArr[3][0] = -15.0;
+    lowRectVertexArr[3][1] = -5.0;//высота нижней части
+    lowRectVertexArr[3][2] = 15.0;
+
+    glBindTexture(GL_TEXTURE_2D, textures[6]);
+
+    lowRectIndexArr[0][0] = 0;
+    lowRectIndexArr[0][1] = 1;
+
+    lowRectIndexArr[0][2] = 2;
+    lowRectIndexArr[0][3] = 3;
+
+
+    lowRectTextureArr[0][0] = 0.0;
+    lowRectTextureArr[0][1] = 0.0;
+
+    lowRectTextureArr[1][0] = 0.0;
+    lowRectTextureArr[1][1] = 0.0;
+
+    lowRectTextureArr[2][0] = 0.0;
+    lowRectTextureArr[2][1] = 0.0;
+
+    lowRectTextureArr[3][0] = 0.0;
+    lowRectTextureArr[3][1] = 0.0;
+
+    glVertexPointer(3, GL_FLOAT, 0, lowRectVertexArr);//координаты в 3д
+    glTexCoordPointer(2, GL_FLOAT, 0, lowRectTextureArr);//почему-то в отладке float работает
+    glDrawElements(GL_POLYGON, 4, GL_UNSIGNED_BYTE, lowRectIndexArr);
+}
+ * */

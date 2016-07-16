@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>cubeFive.jpg</file>
+        <file>cubeFour.jpg</file>
+        <file>cubeOne.jpg</file>
+        <file>cubeSix.jpg</file>
+        <file>cubeThree.jpg</file>
+        <file>cubeTwo.jpg</file>
+        <file>lower_t.jpg</file>
+        <file>left_t.jpg</file>
+    </qresource>
+</RCC>
